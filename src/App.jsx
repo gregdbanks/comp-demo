@@ -94,7 +94,7 @@ const StyledLink = styled(Link)`
 `;
 
 const App = () => {
-  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const [isSideNavOpen, setIsSideNavOpen] = useState(true);
 
   const toggleSideNav = () => {
     setIsSideNavOpen(!isSideNavOpen);
