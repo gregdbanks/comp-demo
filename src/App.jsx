@@ -10,25 +10,9 @@ import { SideNav } from "greg-lib-1";
 import darkLogo from "./darkLogo.svg";
 import "./App.css";
 
-const StyledButton = styled.button`
-  z-index: 999999;
-  color: black;
-
-  img {
-    width: 40%;
-    transition: width 0.1s ease-in-out;
-  }
-
-  &:hover img {
-    width: 41%;
-    transition: width 0.1s ease-in-out;
-  }
-`;
-
 const StyledDiv = styled.div`
   display: flex;
   height: 100%;
-  cursor: pointer;
 `;
 
 const Nav = styled.button`
@@ -40,6 +24,7 @@ const Nav = styled.button`
   height: 100%;
   margin: 50% 0 0 0;
   text-align: left;
+  cursor: ew-resize;
 
   ul {
     list-style-type: none;
@@ -82,6 +67,7 @@ const Indicator = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: ew-resize;
 `;
 
 const StyledLink = styled(Link)`
@@ -107,9 +93,7 @@ const App = () => {
     <StyledDiv>
       <SideNav isOpen={isSideNavOpen} onClick={toggleSideNav}>
         <Indicator>
-          <StyledButton>
-            <img width="40%" src={darkLogo} alt="example logo" />
-          </StyledButton>
+          <img width="40%" src={darkLogo} alt="example logo" />
         </Indicator>
         <Nav>
           {isSideNavOpen ? (
