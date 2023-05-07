@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Route, Routes, Link } from "react-router-dom";
 
 import Button from "./pages/Button";
 import Barchart from "./pages/Barchart";
+// import Badge from "./pages/Badge";
 import Table from "./pages/Table";
 import Home from "./pages/Home";
 import { SideNav } from "greg-lib-1";
@@ -57,10 +58,14 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  text-align: center;
+  overflow: auto;
+  margin-top: 2%;
+`;
+
+const Content = styled.div`
   margin-left: 5%;
   margin-right: 5%;
-  text-align: center;
-  justify-content: space-around;
 `;
 
 const Indicator = styled.div`
@@ -114,13 +119,10 @@ const App = () => {
                 </StyledLink>
               </li>
               {/* <li>
-                                <StyledLink
-                                    to="/badge"
-                                    onClick={handleLinkClick}
-                                >
-                                    Badge
-                                </StyledLink>
-                            </li> */}
+                <StyledLink to="/badge" onClick={handleLinkClick}>
+                  Badge
+                </StyledLink>
+              </li> */}
               <li>
                 <StyledLink to="/barchart" onClick={handleLinkClick}>
                   Barchart
@@ -131,12 +133,15 @@ const App = () => {
         </Nav>
       </SideNav>
       <StyledContent>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/button" element={<Button />} />
-          <Route path="/barchart" element={<Barchart />} />
-          <Route path="/table" element={<Table />} />
-        </Routes>
+        <Content>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route path="/badge" element={<Badge />} /> */}
+            <Route path="/button" element={<Button />} />
+            <Route path="/barchart" element={<Barchart />} />
+            <Route path="/table" element={<Table />} />
+          </Routes>
+        </Content>
       </StyledContent>
     </StyledDiv>
   );

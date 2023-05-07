@@ -1,8 +1,33 @@
 import { useState } from 'react';
 import * as d3 from 'd3';
+import { BarChart } from 'greg-lib-1';
+import styled from "styled-components";
 
 import '../../App.css';
-import { BarChart } from 'greg-lib-1';
+import UsageSection from "../../shared/Usage";
+
+const Options = styled.div`
+    display: flex;
+  flex-direction: column;
+`;
+
+const OptionItem = styled.li`
+  margin: 5px 0px 5px 0;
+`;
+
+const Label = styled.label`
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 8px 0 8px 0;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+`;
+
+const StyledOption = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const colorInterpolators = [
   { name: 'Viridis', interpolator: d3.interpolateViridis },
@@ -125,7 +150,7 @@ const testData = [
   },
 ];
 
-const App = () => {
+const BarchartPage = () => {
   const [colorInterpolator, setColorInterpolator] = useState('Blues');
 
   const selectedInterpolator = colorInterpolators.find(
@@ -133,7 +158,6 @@ const App = () => {
   );
   return (
     <div style={{ width: '100%', position: 'relative' }}>
-      <h1>Barchart</h1>
 
       <BarChart
         width="100%"
@@ -143,8 +167,53 @@ const App = () => {
           selectedInterpolator?.interpolator || d3.interpolateBlues
         }
       />
+
+      <UsageSection
+        // title="Usage:"
+        codeSnippet={
+          `import { BarChart } from "greg-lib-1";
+
+// const testData = [  {    timestamp: '2023-01-01',    names: ['Maverick', 'Goose', 'Iceman', 'Viper', 'Jester'],
+//  values: [12, 7, 15, 9, 6],
+//  },
+// ];
+
+<BarChart
+  width="100%"
+  height={600}
+  data={testData}
+  colorInterpolator={selectedInterpolator?.interpolator || d3.interpolateBlues}
+/>` }
+      >
+        <Options>
+          <StyledOption>
+            <Label>width</Label>
+            <OptionItem>
+              The width of the bar chart. Accepts any valid CSS width value.
+            </OptionItem>
+          </StyledOption>
+          <StyledOption>
+            <Label>height</Label>
+            <OptionItem>
+              The height of the bar chart in pixels.
+            </OptionItem>
+          </StyledOption>
+          <StyledOption>
+            <Label>data</Label>
+            <OptionItem>
+              The data to be visualized. Must be an array of objects, where each object represents a timestamp and contains an array of names and an array of values.
+            </OptionItem>
+          </StyledOption>
+          <StyledOption>
+            <Label>colorInterpolator</Label>
+            <OptionItem>
+              The color interpolator to use for the chart. Accepts a D3 color interpolator function or a string representing one of the available color interpolators (e.g. "Blues", "Greens", "Reds").
+            </OptionItem>
+          </StyledOption>
+        </Options>
+      </UsageSection>
     </div>
   );
 };
 
-export default App;
+export default BarchartPage;

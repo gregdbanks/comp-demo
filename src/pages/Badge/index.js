@@ -1,10 +1,9 @@
-import { FC } from 'react';
+import React from 'react';
 
-import Badge from '../../../lib/components/Badge';
-
+import { Badge } from 'greg-lib-1';
 import '../../App.css';
 
-const App: FC = () => {
+const BadgePage = () => {
   return (
     <>
       <h1>A notification badge:</h1>
@@ -13,4 +12,4 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default BadgePage;
